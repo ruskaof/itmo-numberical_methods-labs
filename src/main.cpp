@@ -1,6 +1,7 @@
 #include "matrix/Matrix.h"
 #include "input/matrix_input.h"
 #include "gauss/gauss_method.h"
+#include "random/matrix_random.h"
 
 void print_result(GaussResult &gr) {
     std::cout << "Determinant: " << gr.determinant << '\n';
@@ -20,7 +21,9 @@ void print_result(GaussResult &gr) {
 }
 
 int main() {
-    auto matrix = read_matrix(std::cin, std::cout);
+//    auto matrix = read_matrix(std::cin, std::cout);
+    auto distribution = std::uniform_real_distribution<double>(-3, 3);
+    auto matrix = generate_random_matrix(4, 5, distribution);
     std::cout << "You entered matrix: " << '\n' << matrix.to_string() << std::endl;
     auto result = gauss_method(matrix);
     print_result(result);
