@@ -2,7 +2,6 @@
 #include <chrono>
 
 #include "matrix/Matrix.h"
-#include "input/matrix_input.h"
 #include "gauss/gauss_method.h"
 #include "random/matrix_random.h"
 
@@ -38,5 +37,5 @@ int main() {
 
     // Output the elapsed time
     std::cout << "Elapsed time: " << elapsed_time.count() << " ms" << std::endl;
-//    print_result(result);
+    print_result(result);
 }

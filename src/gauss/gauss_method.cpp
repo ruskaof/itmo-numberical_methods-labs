@@ -37,8 +37,15 @@ static std::optional<std::vector<double>> get_solution(Matrix &matrix) {
     std::vector<double> solution(matrix.rows());
     for (size_t diagonal_index = matrix.rows() - 1;; diagonal_index--) {
         double variable_coeff = matrix[diagonal_index][diagonal_index];
+        double free_term = matrix[diagonal_index][matrix.columns() - 1];
+
         if (tolerantly_equal(variable_coeff, 0)) {
-            return std::nullopt;
+            if (tolerantly_equal(free_term, 0)) {
+                solution[diagonal_index] = 0;
+                continue;
+            } else {
+                return std::nullopt;
+            }
         }
 
         double other_row_variables_sum = 0.0;
@@ -46,7 +53,6 @@ static std::optional<std::vector<double>> get_solution(Matrix &matrix) {
         for (size_t column_index = diagonal_index + 1; column_index < matrix.columns() - 1; column_index++) {
             other_row_variables_sum += matrix[diagonal_index][column_index] * solution[column_index];
         }
-        double free_term = matrix[diagonal_index][matrix.columns() - 1];
         solution[diagonal_index] = (free_term - other_row_variables_sum) / variable_coeff;
 
 
