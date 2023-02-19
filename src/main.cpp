@@ -13,7 +13,7 @@ void print_result(GaussResult &gr) {
         }
         std::cout << "Residual:" << '\n';
         for (size_t i = 0; i < gr.solution.value().size(); i++) {
-            std::cout << "x" << i + 1 << ": " << gr.residual[i] << '\n';
+            std::cout << "x" << i + 1 << ": " << gr.residual.value()[i] << '\n';
         }
     } else {
         std::cout << "There is no solution" << '\n';
@@ -21,9 +21,10 @@ void print_result(GaussResult &gr) {
 }
 
 int main() {
-//    auto matrix = read_matrix(std::cin, std::cout);
-    auto distribution = std::uniform_real_distribution<double>(-3, 3);
-    auto matrix = generate_random_matrix(4, 5, distribution);
+    auto matrix = read_matrix(std::cin, std::cout);
+//    auto distribution = std::uniform_real_distribution<double>(-3, 3);
+//    auto matrix = generate_random_matrix(5000, 5001, distribution);
+    std::cout << "Rows: " << matrix.rows() << '\n' << "Columns: " << matrix.columns() << '\n';
     std::cout << "You entered matrix: " << '\n' << matrix.to_string() << std::endl;
     auto result = gauss_method(matrix);
     print_result(result);

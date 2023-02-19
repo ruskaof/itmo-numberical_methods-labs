@@ -9,7 +9,7 @@
 
 const double TOLERANCE = 0.0001;
 
-bool tolerantly_equal(double a, double b) {
+inline bool tolerantly_equal(double a, double b) {
     return std::abs(a - b)  < TOLERANCE;
 }
 

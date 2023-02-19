@@ -54,7 +54,8 @@ std::string MatrixRow::to_string(int width, int precision) {
 
     oss << std::fixed << std::setprecision(precision);
     for (size_t i = 0; i < m_size; i++) {
-        oss << std::setw(width) << m_data[i];
+        oss << std::setw(width);
+        oss << m_data[i];
     }
 
     return oss.str();

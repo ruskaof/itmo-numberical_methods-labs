@@ -21,7 +21,7 @@ std::string Matrix::to_string(int width, int precision) {
     std::ostringstream oss;
 
     oss << std::fixed << std::setprecision(precision);
-    for (size_t i = 0; i < m_columns; i++) {
+    for (size_t i = 0; i < m_rows; i++) {
         oss << m_data[i].to_string(width, precision);
         if (i != m_columns - 1) {
             oss << '\n';

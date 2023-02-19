@@ -19,4 +19,4 @@ else ()
 endif ()
 
 
-add_executable(lab1 src/main.cpp src/matrix/MatrixRow.cpp src/matrix/MatrixRow.h src/matrix/Matrix.cpp src/matrix/Matrix.h src/input/matrix_input.cpp src/input/matrix_input.h src/gauss/gauss_method.cpp src/gauss/gauss_method.h src/util/tolerant_equals.h src/random/matrix_random.cpp src/random/matrix_random.h)
+add_executable(lab1 src/main.cpp src/matrix/MatrixRow.cpp src/matrix/MatrixRow.h src/matrix/Matrix.cpp src/matrix/Matrix.h src/input/matrix_input.cpp src/input/matrix_input.h src/gauss/gauss_method.cpp src/gauss/gauss_method.h src/util/tolerant_equals.h src/random/matrix_random.cpp src/random/matrix_random.h src/matrix/triangulation/triangulation.cpp src/matrix/triangulation/triangulation.h)

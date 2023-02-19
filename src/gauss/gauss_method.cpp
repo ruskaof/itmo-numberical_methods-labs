@@ -5,24 +5,26 @@
 #include <optional>
 #include "gauss_method.h"
 #include "../util/tolerant_equals.h"
+#include "../matrix/triangulation/triangulation.h"
 
-static void make_diagonal(Matrix &matrix);
 
 static std::optional<std::vector<double>> get_solution(Matrix &matrix);
 
-static double get_determinant(Matrix &matrix);
+static double get_determinant_of_triangular(const Matrix &matrix);
 
 std::optional<std::vector<double>> get_residual(Matrix &matrix, std::optional<std::vector<double>> &solution);
 
-GaussResult gauss_method(Matrix &input) {
-    make_diagonal(input);
-    double determinant = get_determinant(input);
-    auto solution = get_solution(input);
-    auto residual = get_residual(input, solution);
-    return GaussResult{determinant, input, solution, {0}};
+GaussResult gauss_method(const Matrix &input) {
+    auto copy = Matrix(input);
+    size_t rows_swapped_n = make_triangulated(copy);
+    double determinant =
+            rows_swapped_n % 2 == 0 ? get_determinant_of_triangular(copy) : -get_determinant_of_triangular(copy);
+    auto solution = get_solution(copy);
+    auto residual = get_residual(copy, solution);
+    return GaussResult{determinant, copy, solution, residual};
 }
 
-static double get_determinant(Matrix &matrix) {
+static double get_determinant_of_triangular(const Matrix &matrix) {
     double determinant = 1.0;
     for (size_t diagonal_index = 0; diagonal_index < matrix.rows(); diagonal_index++) {
         determinant *= matrix[diagonal_index][diagonal_index];
@@ -54,23 +56,6 @@ static std::optional<std::vector<double>> get_solution(Matrix &matrix) {
     }
 }
 
-static void make_diagonal(Matrix &matrix) {
-    // Iterate through each column to make all the elements below `column_index` zero
-    for (size_t diagonal_index = 0; diagonal_index < matrix.columns() - 1; diagonal_index++) {
-        // Find a row with a non-zero element on `diagonal_index` index to subtract it from all the others
-        for (size_t row_index = diagonal_index; row_index < matrix.rows(); row_index++) {
-            if (!tolerantly_equal(matrix[row_index][diagonal_index], 0)) {
-                std::swap(matrix[row_index], matrix[diagonal_index]); // now our row is on index `diagonal_index`
-                for (size_t lower_row_index = diagonal_index + 1; lower_row_index < matrix.rows(); lower_row_index++) {
-                    double coeff = matrix[lower_row_index][diagonal_index] / matrix[diagonal_index][diagonal_index];
-                    matrix[lower_row_index] = matrix[lower_row_index] - matrix[diagonal_index] * coeff;
-                }
-                break;
-            }
-        }
-    }
-}
-
 std::optional<std::vector<double>> get_residual(Matrix &matrix, std::optional<std::vector<double>> &solution) {
     if (!solution.has_value()) {
         return std::nullopt;
@@ -84,6 +69,7 @@ std::optional<std::vector<double>> get_residual(Matrix &matrix, std::optional<st
     }
 
     for (size_t i = 0; i < matrix.rows(); i++) {
+        std::cout << evaluated_right[i] << ' ' << solution.value()[i] << std::endl;
         evaluated_right[i] -= solution.value()[i];
     }
 

@@ -12,7 +12,7 @@ struct GaussResult {
     double determinant;
     Matrix triangular_matrix;
     std::optional<std::vector<double>> solution;
-    std::vector<double> residual;
+    std::optional<std::vector<double>> residual;
 };
 
 /**
@@ -20,7 +20,7 @@ struct GaussResult {
  * @param input - n x n+1 matrix
  * @return
  */
-GaussResult gauss_method(Matrix &input);
+GaussResult gauss_method(const Matrix &input);
 
 
 #endif //LAB1_GAUSS_METHOD_H
