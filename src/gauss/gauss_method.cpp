@@ -69,7 +69,6 @@ std::optional<std::vector<double>> get_residual(Matrix &matrix, std::optional<st
     }
 
     for (size_t i = 0; i < matrix.rows(); i++) {
-        std::cout << evaluated_right[i] << ' ' << matrix[i][matrix.columns() - 1] << std::endl;
         evaluated_right[i] -= matrix[i][matrix.columns() - 1];
     }
 

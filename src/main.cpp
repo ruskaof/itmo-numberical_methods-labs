@@ -1,3 +1,6 @@
+#include <locale>
+#include <chrono>
+
 #include "matrix/Matrix.h"
 #include "input/matrix_input.h"
 #include "gauss/gauss_method.h"
@@ -21,11 +24,19 @@ void print_result(GaussResult &gr) {
 }
 
 int main() {
-    auto matrix = read_matrix(std::cin, std::cout);
-//    auto distribution = std::uniform_real_distribution<double>(-3, 3);
-//    auto matrix = generate_random_matrix(5000, 5001, distribution);
+//    auto matrix = read_matrix(std::cin, std::cout);
+    auto distribution = std::uniform_real_distribution<double>(-3, 3);
+    auto matrix = generate_random_matrix(1500, 1501, distribution);
     std::cout << "Rows: " << matrix.rows() << '\n' << "Columns: " << matrix.columns() << '\n';
     std::cout << "You entered matrix: " << '\n' << matrix.to_string() << std::endl;
+
+    auto start_time = std::chrono::high_resolution_clock::now();
     auto result = gauss_method(matrix);
-    print_result(result);
+    auto end_time = std::chrono::high_resolution_clock::now();
+    // Calculate the elapsed time
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+    // Output the elapsed time
+    std::cout << "Elapsed time: " << elapsed_time.count() << " ms" << std::endl;
+//    print_result(result);
 }
