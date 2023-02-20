@@ -50,6 +50,7 @@ int main() {
         std::cin >> filename;
 
         std::ifstream file(filename);
+        file.imbue(PROJECT_LOCALE);
 
         if (file.is_open()) {
             matrix = read_matrix(file, std::cout);
