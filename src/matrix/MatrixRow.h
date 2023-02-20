@@ -19,6 +19,8 @@ public:
 
     MatrixRow(const MatrixRow &mr);
 
+    MatrixRow(std::vector<double> &&data, size_t size);
+
     ~MatrixRow();
 
     MatrixRow &operator=(const MatrixRow &mr);

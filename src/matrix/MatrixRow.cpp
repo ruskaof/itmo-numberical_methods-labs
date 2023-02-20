@@ -61,6 +61,8 @@ std::string MatrixRow::to_string(int width, int precision) {
     return oss.str();
 }
 
+MatrixRow::MatrixRow(std::vector<double> &&data, size_t size) : m_data(std::move(data)), m_size(size) {}
+
 MatrixRow &MatrixRow::operator=(const MatrixRow &mr) = default;
 
 MatrixRow::MatrixRow(const MatrixRow &mr) = default;
