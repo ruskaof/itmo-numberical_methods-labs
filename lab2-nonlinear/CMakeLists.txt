@@ -19,4 +19,4 @@ else ()
 endif ()
 
 
-add_executable(lab2_nonlinear main.cpp newton/newton_solver.cpp newton/newton_solver.h fixed_point/fixed_point_solver.cpp fixed_point/fixed_point_solver.h util/itermethods_reduce.cpp util/itermethods_reduce.h)
+add_executable(lab2_nonlinear main.cpp newton/newton_solver.cpp newton/newton_solver.h fixed_point/fixed_point_solver.cpp fixed_point/fixed_point_solver.h util/itermethods_scalar_reduce.cpp util/itermethods_scalar_reduce.h)

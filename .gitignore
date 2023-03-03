@@ -9,3 +9,5 @@ lab2-nonlinear/cmake-build-release/
 lab2-nonlinear/cmake-build-sanitized/
 lab2-nonlinear/.idea/
 lab2-nonlinear/tests/
+
+/.idea/

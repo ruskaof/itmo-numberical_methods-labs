@@ -2,7 +2,7 @@
 // Created by ruskaof on 3/03/23.
 //
 
-#include "itermethods_reduce.h"
+#include "itermethods_scalar_reduce.h"
 
 double reduce(double initial_value, const std::function<double(double)> &accumulator_function, size_t num_of_iterations) {
     double current_x = initial_value;

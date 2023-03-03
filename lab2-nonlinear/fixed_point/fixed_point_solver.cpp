@@ -3,7 +3,7 @@
 //
 
 #include "fixed_point_solver.h"
-#include "../util/itermethods_reduce.h"
+#include "../util/itermethods_scalar_reduce.h"
 
 double FixedPointSolver::solve(const std::function<double(double)> &f, double lambda, double initial_guess,
                                size_t num_of_iterations) {

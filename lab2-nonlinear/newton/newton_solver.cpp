@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "newton_solver.h"
-#include "../util/itermethods_reduce.h"
+#include "../util/itermethods_scalar_reduce.h"
 
 double NewtonSolver::solve(const std::function<double(double)> &f, const std::function<double(double)> &f_prime,
                            double initial_guess, size_t num_of_iterations) {
