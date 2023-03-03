@@ -41,7 +41,7 @@ int main() {
 
     if (enter == 1) {
         auto distribution = std::uniform_real_distribution<double>(-3, 3);
-        matrix = generate_random_matrix(20, 21, distribution);
+        matrix = generate_random_matrix(1500, 1501, distribution);
     } else if (enter == 2) {
         matrix = read_matrix(std::cin, std::cout);
     } else {

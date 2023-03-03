@@ -1,5 +1,11 @@
-/cmake-build-debug/
-/cmake-build-release/
-/cmake-build-sanitized/
-/.idea/
-/tests/
+lab1-linear/cmake-build-debug/
+lab1-linear/cmake-build-release/
+lab1-linear/cmake-build-sanitized/
+lab1-linear/.idea/
+lab1-linear/tests/
+
+lab2-nonlinear/cmake-build-debug/
+lab2-nonlinear/cmake-build-release/
+lab2-nonlinear/cmake-build-sanitized/
+lab2-nonlinear/.idea/
+lab2-nonlinear/tests/
