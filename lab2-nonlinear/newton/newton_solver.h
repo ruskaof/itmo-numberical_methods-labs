@@ -9,11 +9,11 @@
 
 namespace NewtonSolver {
 /**
- * Solves an equation f(x) = 0
+ * Solves an equation f(x) = 0 using Newton's method
  * @param f
  * @param f_prime
  * @param initial_guess
- * @param num_of_iterations
+ * @param num_of_iterations number of iterations the method performs.
  * @return
  */
     double
@@ -21,11 +21,11 @@ namespace NewtonSolver {
           size_t num_of_iterations);
 
 /**
- * Solves an equation f(x) = 0
+ * Solves an equation f(x) = 0 using Newton's method
  * @param f
  * @param f_prime
  * @param initial_guess
- * @param num_of_iterations
+ * @param epsilon a value such that iterations stop if |x_i - x_{i-1}| < epsilon
  * @return
  */
     double
